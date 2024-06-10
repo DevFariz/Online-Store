@@ -19,7 +19,7 @@ public class Discount {
 
     private String name;
 
-    private String desc;
+    private String description;
 
     @Column(name = "discount_percent")
     private Double discountPercent;

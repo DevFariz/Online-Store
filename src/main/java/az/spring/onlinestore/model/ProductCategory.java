@@ -19,5 +19,5 @@ public class ProductCategory {
 
     private String name;
 
-    private String desc;
+    private String description;
 }
