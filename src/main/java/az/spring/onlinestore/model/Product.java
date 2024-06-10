@@ -1,9 +1,6 @@
 package az.spring.onlinestore.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,5 +23,15 @@ public class Product {
 
     private Double price;
 
+    @ManyToOne
+    @JoinColumn(name = "product_category_id")
+    private ProductCategory productCategory;
 
+    @OneToOne
+    @JoinColumn(name = "product_inventory_id")
+    private ProductInventory productInventory;
+
+    @OneToOne
+    @JoinColumn(name = "discount_id")
+    private Discount discount;
 }

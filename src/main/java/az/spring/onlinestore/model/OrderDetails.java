@@ -1,13 +1,12 @@
 package az.spring.onlinestore.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,4 +20,12 @@ public class OrderDetails {
     private Long id;
 
     private Double total;
+
+    @OneToOne
+    @JoinColumn(name = "payment_details_id")
+    private PaymentDetails paymentDetails;
+
+    @OneToMany
+    @JoinColumn(name = "order_details_id")
+    private List<CardItem> cardItem;
 }

@@ -1,9 +1,6 @@
 package az.spring.onlinestore.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,4 +18,8 @@ public class CardItem {
     private Long id;
 
     private Integer quantity;
+
+    @OneToOne()
+    @JoinColumn(name = "product_id")
+    private Product product;
 }

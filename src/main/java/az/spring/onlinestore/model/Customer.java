@@ -1,33 +1,40 @@
 package az.spring.onlinestore.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Customer  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 50, nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
     private String firstName;
 
     private String lastName;
 
-    @Column(unique = true, nullable = false)
     private String mobile;
+
+    @OneToOne
+    @JoinColumn(name = "customer_address_id")
+    private CustomerAddress customerAddress;
+
+    @OneToOne
+    @JoinColumn(name = "customer_payment_id")
+    private CustomerPayment customerPayment;
+
+    @OneToOne
+    @JoinColumn(name = "order_details")
+    private OrderDetails orderDetails;
+
 }
