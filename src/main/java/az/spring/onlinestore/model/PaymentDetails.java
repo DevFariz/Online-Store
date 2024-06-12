@@ -1,9 +1,7 @@
 package az.spring.onlinestore.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import az.spring.onlinestore.enums.PaymentStatus;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,5 +24,6 @@ public class PaymentDetails {
 
     private String provider;
 
-    private String status;
+    @Enumerated(EnumType.ORDINAL)
+    private PaymentStatus status;
 }
